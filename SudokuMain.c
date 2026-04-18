@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "Board.h"
 
 int main() {
     int rows = 9, cols = 9;
@@ -10,11 +11,16 @@ int main() {
     for (int i = 0; i < rows; i++) {
         board[i] = malloc(cols * sizeof(int));
     }
+
+    initializeBoard(board, rows, cols);
+    
     int col, value;
     int row = 0;
 
     while (row != -1)
     {
+        printBoard(board, rows, cols);
+        
         // letting users stop entering values with -1
         printf("Enter a row value (0-8, enter -1 to quit): ");
         scanf("%d", &row);
@@ -38,5 +44,7 @@ int main() {
             }
         }
     }
+    freeBoard(board, rows);
+    
     return 0;
 }

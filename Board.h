@@ -6,3 +6,4 @@ void printBoard(int **board, int rows, int cols);
 void freeBoard(int **board, int rows);
 
 #endif
+

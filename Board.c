@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "Board.h"
 
+//controls Sudoku board
 int **createBoard(void) {
     int **board = malloc(SIZE * sizeof(int *));
 
@@ -28,7 +29,7 @@ int **createBoard(void) {
     return board;
 }
 
-void freeBoard(int **board) {
+void freeBoard(int **board) { //deletes board from memory 
     if (board == NULL) {
         return;
     }
@@ -40,7 +41,7 @@ void freeBoard(int **board) {
     free(board);
 }
 
-void copyBoard(int **dest, int **src) {
+void copyBoard(int **dest, int **src) { //copies on board into another
     for (int i = 0; i < SIZE; i++) {
         for (int j = 0; j < SIZE; j++) {
             dest[i][j] = src[i][j];
@@ -48,7 +49,7 @@ void copyBoard(int **dest, int **src) {
     }
 }
 
-void printBoard(int **board) {
+void printBoard(int **board) { //prints grid
     printf("\n");
     printf("    0 1 2   3 4 5   6 7 8\n");
     printf("  +-------+-------+-------+\n");
@@ -88,7 +89,7 @@ int isBoardFull(int **board) {
     return 1;
 }
 
-int isValidMove(int **board, int row, int col, int value) {
+int isValidMove(int **board, int row, int col, int value) { //checks if Sudoku move follows rules
     int boxRow;
     int boxCol;
 

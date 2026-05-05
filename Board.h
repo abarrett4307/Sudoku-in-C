@@ -1,11 +1,20 @@
 #ifndef BOARD_H
 #define BOARD_H
 
-void initializeBoard(int **board, int rows, int cols);
-void printBoard(int **board, int rows, int cols);
-void freeBoard(int **board, int rows);
+#define SIZE 9
 
-int isValidMove(int **board, int row, int cols, int num);
+typedef struct {
+    int row;
+    int col;
+    int value;
+} Move;
+
+int **createBoard(void);
+void freeBoard(int **board);
+void copyBoard(int **dest, int **src);
+void printBoard(int **board);
+
+int isBoardFull(int **board);
+int isValidMove(int **board, int row, int col, int value);
 
 #endif
-

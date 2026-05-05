@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include "Puzzle.h"
+
+int loadPuzzle(char filename[], int **board) {
+    FILE *file = fopen(filename, "r");
+
+    if (file == NULL) {
+        return 0;
+    }
+
+    // Read 81 numbers into the board
+    for (int i = 0; i < SIZE; i++) {
+        for (int j = 0; j < SIZE; j++) {
+            if (fscanf(file, "%d", &board[i][j]) != 1) {
+                fclose(file);
+                return 0;
+            }
+        }
+    }
+
+    fclose(file);
+    return 1;
+}
+
+void loadDefaultPuzzle(int **board) {
+    int puzzle[SIZE][SIZE] = {
+        {5, 3, 0, 0, 7, 0, 0, 0, 0},
+        {6, 0, 0, 1, 9, 5, 0, 0, 0},
+        {0, 9, 8, 0, 0, 0, 0, 6, 0},
+        {8, 0, 0, 0, 6, 0, 0, 0, 3},
+        {4, 0, 0, 8, 0, 3, 0, 0, 1},
+        {7, 0, 0, 0, 2, 0, 0, 0, 6},
+        {0, 6, 0, 0, 0, 0, 2, 8, 0},
+        {0, 0, 0, 4, 1, 9, 0, 0, 5},
+        {0, 0, 0, 0, 8, 0, 0, 7, 9}
+    };
+
+    for (int i = 0; i < SIZE; i++) {
+        for (int j = 0; j < SIZE; j++) {
+            board[i][j] = puzzle[i][j];
+        }
+    }
+}

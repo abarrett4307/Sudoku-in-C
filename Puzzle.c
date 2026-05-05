@@ -9,8 +9,8 @@ int loadPuzzle(char filename[], int **board) {
     }
 
     // Read 81 numbers into the board
-    for (int i = 0; i < SIZE; i++) {
-        for (int j = 0; j < SIZE; j++) {
+    for (int i = 0; i < SIZE; i++) { //checks row by row
+        for (int j = 0; j < SIZE; j++) { //checks column by column inside each row
             if (fscanf(file, "%d", &board[i][j]) != 1) {
                 fclose(file);
                 return 0;
@@ -37,7 +37,7 @@ void loadDefaultPuzzle(int **board) {
 
     for (int i = 0; i < SIZE; i++) {
         for (int j = 0; j < SIZE; j++) {
-            board[i][j] = puzzle[i][j];
+            board[i][j] = puzzle[i][j]; //copies puzzle into game board
         }
     }
 }
